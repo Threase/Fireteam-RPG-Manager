@@ -72,3 +72,4 @@ class UpdateUserForm(FlaskForm):
 # TODO: Finish implementing
 class CreateGameForm(FlaskForm):
     title = StringField('Name of Game', validators=[DataRequired(), Length(min=2, max=100)])
+    description = TextAreaField('Short Description of the game.', validators=[DataRequired()])

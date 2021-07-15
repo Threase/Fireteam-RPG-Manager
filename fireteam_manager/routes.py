@@ -196,3 +196,16 @@ def delete_account(selected_account):
     db.session.commit()
     flash('This account has been deleted.', 'info')
     return redirect(url_for('manage_users'))
+
+
+# TODO:Create
+@app.route('/create_game/', methods=['GET', 'POST'])
+@login_required
+def create_game():
+    form =
+
+
+@app.route('/edit_game/<int:selected_game_id>', methods=['GET', 'POST'])
+@login_required
+def edit_game(selected_game_id):
+    pass

@@ -4,7 +4,7 @@
         <a class="nav-item nav-link" href="#">Create a New Game</a>
     {% endif %}
     {% for game in game_list %}
-        <div>
+        <div class="content-section">
             <h3>{{ game.title }}</h3>
             <div>{{ game.description }}</div>
         </div>
@@ -17,6 +17,19 @@
                     <th scope="col">Open</th>
                 </tr>
             </thead>
+        <tbody>
+            {% for character in character_list %}
+                <tr>
+                    <td>{{ character.id }}</td>
+                    <td>{{ character.character_name }}</td>
+                    <td>{{ character.level }}</td>
+                    {% if current_user.id == character.user_id %}
+                        <td><a href="#">Open</a></td>
+                    {% else %}
+                        <td>Not your character.</td>
+                </tr>
+            {% endfor %}
+        </tbody>
         </table>
     {% endfor %}
 {% endblock content %}
