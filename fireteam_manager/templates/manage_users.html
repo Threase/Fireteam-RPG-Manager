@@ -1,0 +1,30 @@
+{% extends 'layout.html' %}
+{% block content %}
+    <a class="nav-item nav-link" href="{{ url_for('register_new_user') }}">Add New User</a>
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">User ID</th>
+                <th scope="col">Username</th>
+                <th scope="col">Edit</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for user in users %}
+                <tr>
+                    <td>{{ user.id }}</td>
+                    <td>{{ user.username }}</td>
+                    {% if user.username == current_user.username %}
+                        <td><a href="{{ url_for('account') }}">Edit Self</a></td>
+                    {% elif current_user.is_super_admin %}
+                        <td><a href="{{ url_for('edit_user', selected_user=user.id) }}">Edit User</a></td>
+                    {% elif user.is_super_admin == False and user.is_admin == False %}
+                        <td><a href="{{ url_for('edit_user', selected_user=user.id) }}">Edit User</a></td>
+                    {% else %}
+                        <td>You cannot edit admins.</td>
+                    {% endif %}
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock content %}
