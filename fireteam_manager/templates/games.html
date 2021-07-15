@@ -1,0 +1,22 @@
+{% extends 'layout.html' %}
+{% block content %}
+    {% if current_user.is_admin %}
+        <a class="nav-item nav-link" href="#">Create a New Game</a>
+    {% endif %}
+    {% for game in game_list %}
+        <div>
+            <h3>{{ game.title }}</h3>
+            <div>{{ game.description }}</div>
+        </div>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">Character ID</th>
+                    <th scope="col">Character Name</th>
+                    <th scope="col">Level</th>
+                    <th scope="col">Open</th>
+                </tr>
+            </thead>
+        </table>
+    {% endfor %}
+{% endblock content %}

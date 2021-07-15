@@ -139,7 +139,6 @@ def new_character():
 @login_required
 def games():
     list_of_all_games = Game.query.order_by(Game.id.asc()).all()
-    print(list_of_all_games[0].title)
     list_of_all_characters = Character.query.order_by(Character.id.asc()).all()
     return render_template('games.html',
                            game_list=list_of_all_games,
